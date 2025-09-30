@@ -6,7 +6,7 @@ function goBackToStart() {
     button.style.transform = 'scale(0.95)';
     
     setTimeout(() => {
-        window.location.href = 'splash.html';
+        window.location.href = 'index.html';
     }, 200);
 }
 
