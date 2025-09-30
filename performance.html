@@ -3,107 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Performance for Ishwa</title>
+    <title>Love Performance for Ishwa ❤️</title>
     <link rel="stylesheet" href="CSS/performance.css">
 </head>
 <body>
+    <!-- Animated Background Elements -->
+    <div class="stars-background"></div>
+    <div class="hearts-background"></div>
+    
+    <!-- Particle System -->
+    <canvas id="particle-canvas"></canvas>
+    
     <div class="performance-container">
         <header>
-            <h1>Love Performance</h1>
+            <div class="title-wrapper">
+                <h1>
+                    <span class="letter">L</span>
+                    <span class="letter">o</span>
+                    <span class="letter">v</span>
+                    <span class="letter">e</span>
+                    <span class="space"> </span>
+                    <span class="letter">P</span>
+                    <span class="letter">e</span>
+                    <span class="letter">r</span>
+                    <span class="letter">f</span>
+                    <span class="letter">o</span>
+                    <span class="letter">r</span>
+                    <span class="letter">m</span>
+                    <span class="letter">a</span>
+                    <span class="letter">n</span>
+                    <span class="letter">c</span>
+                    <span class="letter">e</span>
+                </h1>
+                <div class="heart-pulse">💖</div>
+            </div>
+            <p class="subtitle">A special journey created with love for Ishwa</p>
         </header>
         
         <div class="performance-content">
             <!-- First Video Container -->
             <div class="video-container" id="video-container-1">
-                <video id="love-video-1" preload="auto">
-                    <source src="assert/love song 1.mp4" type="video/mp4">
-                    <p>Your browser does not support the video tag. Please use a modern browser to view this content.</p>
-                </video>
-                
-                <div class="video-overlay" id="video-overlay-1">
-                    <div class="play-button" onclick="playVideo(1)">
-                        <span>▶</span>
+                <div class="video-wrapper">
+                    <div class="video-frame">
+                        <iframe id="love-video-1" 
+                                src="https://drive.google.com/file/d/1-cv3mIQCH7UmM79cVXlPv4ooMHQN9xam/preview" 
+                                allow="autoplay"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="video-overlay active" id="video-overlay-1">
+                        <div class="overlay-content">
+                            <div class="play-button" onclick="playVideo(1)">
+                                <div class="play-icon">▶</div>
+                                <div class="play-ripple"></div>
+                            </div>
+                            <p class="video-label">First Performance</p>
+                            <div class="duration-badge">10:35</div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Video Timer Display -->
-                <div class="video-timer" id="video-timer-1">
-                    <span id="current-time-1">0:00</span> / <span id="duration-1">10:35</span>
+                <div class="video-info">
+                    <h3>Performance Part 1 🎵</h3>
+                    <div class="video-controls">
+                        <button class="nav-button" id="prev-btn-1" onclick="previousVideo()" disabled>
+                            <span>◀</span>
+                        </button>
+                        <div class="current-video-indicator">
+                            Video <span id="current-num">1</span> of 2
+                        </div>
+                        <button class="nav-button" id="next-btn-1" onclick="nextVideo()">
+                            <span>▶</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             
             <!-- Second Video Container (Initially Hidden) -->
             <div class="video-container hidden" id="video-container-2">
-                <video id="love-video-2" preload="auto">
-                    <source src="assert/love song 2.mp4" type="video/mp4">
-                    <p>Your browser does not support the video tag. Please use a modern browser to view this content.</p>
-                </video>
-                
-                <div class="video-overlay" id="video-overlay-2">
-                    <div class="play-button" onclick="playVideo(2)">
-                        <span>▶</span>
+                <div class="video-wrapper">
+                    <div class="video-frame">
+                        <iframe id="love-video-2" 
+                                src="https://drive.google.com/file/d/1VIy0tawoohyptqqNQaFrzBjAtKWkdaIw/preview" 
+                                allow="autoplay"
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <div class="video-overlay active" id="video-overlay-2">
+                        <div class="overlay-content">
+                            <div class="play-button" onclick="playVideo(2)">
+                                <div class="play-icon">▶</div>
+                                <div class="play-ripple"></div>
+                            </div>
+                            <p class="video-label">Second Performance</p>
+                            <div class="duration-badge">7:25</div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Video Timer Display -->
-                <div class="video-timer" id="video-timer-2">
-                    <span id="current-time-2">0:00</span> / <span id="duration-2">7:25</span>
+                <div class="video-info">
+                    <h3>Performance Part 2 🎶</h3>
+                    <div class="video-controls">
+                        <button class="nav-button" id="prev-btn-2" onclick="previousVideo()">
+                            <span>◀</span>
+                        </button>
+                        <div class="current-video-indicator">
+                            Video <span id="current-num-2">2</span> of 2
+                        </div>
+                        <button class="nav-button" id="next-btn-2" onclick="showFinalMessage()">
+                            <span>✓</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             
             <!-- Love Message (Shows after both videos) -->
             <div id="love-message" class="love-message hidden">
+                <div class="message-decoration-top">✨ ⭐ ✨</div>
                 <div class="main-message">
-                    <h2>I love you, my jaan</h2>
-                    <h3>(my controller baby)</h3>
+                    <h2 class="animated-text">I love you, my jaan</h2>
+                    <h3 class="sub-message">(my controller baby)</h3>
+                    <div class="heart-explosion">
+                        <span>💕</span><span>💖</span><span>💗</span>
+                        <span>💝</span><span>💘</span><span>❤️</span>
+                    </div>
                 </div>
-                <div class="message-decoration">💕💖💕</div>
-            </div>
-            
-            <!-- Loading Indicator -->
-            <div id="loading-indicator" class="loading-indicator">
-                <div class="heart-loader">
-                    <div class="heart"></div>
-                    <div class="heart"></div>
-                    <div class="heart"></div>
-                </div>
-                <p>Loading your special performance...</p>
-            </div>
-            
-            <!-- Video Progress Indicator -->
-            <div id="video-progress" class="video-progress hidden">
-                <span class="progress-text">Video <span id="current-video-num">1</span> of 2</span>
-                <div class="progress-dots">
-                    <span class="dot active" id="dot-1"></span>
-                    <span class="dot" id="dot-2"></span>
+                <div class="message-decoration">
+                    <div class="rotating-hearts">
+                        <span>💕</span>
+                        <span>💖</span>
+                        <span>💗</span>
+                        <span>💝</span>
+                        <span>💘</span>
+                        <span>❤️</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Fireworks Container -->
+    <div id="fireworks-container"></div>
+    
     <script src="JS/performance.js"></script>
-    <script>
-        // Cross-browser compatibility and security
-        document.addEventListener('DOMContentLoaded', function() {
-            const videos = document.querySelectorAll('video');
-            videos.forEach(video => {
-                // Add playsinline for iOS via JavaScript (avoids Firefox warning)
-                video.setAttribute('playsinline', '');
-                
-                // Disable picture-in-picture if supported
-                if ('disablePictureInPicture' in video) {
-                    video.disablePictureInPicture = true;
-                }
-                
-                // Disable remote playback if supported
-                if ('disableRemotePlayback' in video) {
-                    video.disableRemotePlayback = true;
-                }
-                
-                // Prevent right-click download
-                video.addEventListener('contextmenu', e => e.preventDefault());
-            });
-        });
-    </script>
 </body>
 </html>
